@@ -72,25 +72,27 @@ verCarrito.addEventListener("click", pintarCarrito);
 
 const eliminarProducto = () => {
   const foundId = carrito.find((element) => element.id);
+  console.log(foundId); 
 
   carrito = carrito.filter((carritoId) => {
     return carritoId !== foundId;
   });
+
   carritoCounter ();
   saveLocal();
   pintarCarrito();
 };
 
 const carritoCounter = () => {
-    if(carrito.length > 0) {
-    cantidadCarrito.style.display = "block"; }
-    
-    const carritoLength = carrito.length;
-    localStorage.setItem("carritoLength", JSON.stringify(carritoLength));
 
-    cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength"));
-};
+  cantidadCarrito.style.display = "block"; 
+  const carritoLength = carrito.length;
+
+  localStorage.setItem("carritoLength", JSON.stringify(carritoLength));
+
+  cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength"));
+
+}
 
 carritoCounter();
 
-mostrarPuntoCarrito
